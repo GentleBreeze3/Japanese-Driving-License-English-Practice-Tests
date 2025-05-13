@@ -9,8 +9,8 @@ import Image from 'next/image';
 
 export default function ExamSetPage() {
   const params = useParams();
-  const examSetId = parseInt(params.id as string);
-  const examSet = examSets.find(set => set.id === examSetId);
+  const examSetId = params?.id ? parseInt(params.id as string) : null;
+  const examSet = examSetId ? examSets.find(set => set.id === examSetId) : null;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, boolean>>({});
   const [showResults, setShowResults] = useState(false);
